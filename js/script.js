@@ -23,6 +23,7 @@ function createBookCard(book) {
   const pageCountElement = document.createElement('p');
   const isReadElement = document.createElement('input');
   const isReadLabel = document.createElement('label');
+  const delBtn = document.createElement('button');
 
   bookCard.classList.add('book-card');
   titleElement.textContent = book.title;
@@ -31,6 +32,7 @@ function createBookCard(book) {
   isReadElement.type = 'checkbox';
   isReadElement.checked = book.isRead;
   isReadLabel.textContent = 'Read';
+  delBtn.textContent = 'Remove Book';
 
   isReadLabel.appendChild(isReadElement);
 
@@ -38,6 +40,7 @@ function createBookCard(book) {
   bookCard.appendChild(authorElement);
   bookCard.appendChild(pageCountElement);
   bookCard.appendChild(isReadLabel);
+  bookCard.appendChild(delBtn);
 
   return bookCard;
 }

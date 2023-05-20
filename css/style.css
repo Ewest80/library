@@ -82,7 +82,7 @@ input[type='number'] {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
-  grid-auto-rows: 15.75rem;
+  grid-auto-rows: 18.75rem;
   gap: 2rem;
 }
 
@@ -100,12 +100,12 @@ input[type='number'] {
 .book-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem;
   border: 1px solid black;
   border-radius: 0.5rem;
-  max-height: 31.25rem;
+  height: 300px;
   background-color: #fff;
 }
 
@@ -176,7 +176,6 @@ input[type='number'] {
 .close:hover,
 .close:focus {
   color: var(--rose-quartz);
-  /* text-decoration: none; */
   cursor: pointer;
 }
 
