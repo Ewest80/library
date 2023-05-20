@@ -44,6 +44,9 @@ function createBookCard(book) {
 const gridContainer = document.querySelector('.grid-container');
 
 function displayBooks(library) {
+  // Clear the gridContainer to prevent duplicates
+  gridContainer.innerHTML = '';
+
   library.forEach((book) => {
     const bookCard = createBookCard(book);
     gridContainer.appendChild(bookCard);
@@ -74,4 +77,21 @@ window.addEventListener('click', (e) => {
   if (e.target === modal) {
     modal.style.display = 'none';
   }
+});
+
+// Handle form submission
+document.getElementById('bookForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pageCount = document.getElementById('pageCount').value;
+  const isRead = document.getElementById('isRead').checked;
+
+  const book = new Book(title, author, pageCount, isRead);
+
+  addBookToLibrary(book);
+  modal.style.display = 'none';
+  document.getElementById('bookForm').reset();
+  displayBooks(myLibrary);
 });
