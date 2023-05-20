@@ -66,16 +66,28 @@ displayBooks(myLibrary);
 
 addBook.addEventListener('click', () => {
   modal.style.display = 'block';
+  setTimeout(() => {
+    modal.classList.add('modal-open');
+  }, 0);
 });
 
+function closeModal() {
+  modal.classList.remove('modal-open');
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 300);
+}
+
 closeBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
+  // modal.style.display = 'none';
+  closeModal();
 });
 
 // Close modal when clicking outside the modal content
 window.addEventListener('click', (e) => {
   if (e.target === modal) {
-    modal.style.display = 'none';
+    // modal.style.display = 'none';
+    closeModal();
   }
 });
 
@@ -91,7 +103,8 @@ document.getElementById('bookForm').addEventListener('submit', (e) => {
   const book = new Book(title, author, pageCount, isRead);
 
   addBookToLibrary(book);
-  modal.style.display = 'none';
+  // modal.style.display = 'none';
+  closeModal();
   document.getElementById('bookForm').reset();
   displayBooks(myLibrary);
 });
