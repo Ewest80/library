@@ -18,9 +18,10 @@
     <header class="header">
       <div class="container">
         <h1 class="logo">Library</h1>
-        <img src="./images/plus-circle.svg" alt="" />
+        <img id="addBook" src="./images/plus-circle.svg" alt="" />
       </div>
     </header>
+
     <div class="container">
       <div class="library-info">
         <div class="info">
@@ -41,8 +42,35 @@
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="grid-container"></div>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h2>Book Info</h2>
+        <span class="close">&times;</span>
+        <form action="#" id="bookForm">
+          <div class="form-item">
+            <input type="text" name="title" id="title" required />
+            <label for="title">Title</label>
+          </div>
+          <div class="form-item">
+            <input type="text" name="author" id="author" required />
+            <label for="author">Author</label>
+          </div>
+          <div class="form-item">
+            <input type="number" name="pageCount" id="pageCount" required />
+            <label for="pageCount">Page Count</label>
+          </div>
+          <div class="form-item">
+            <label for="isRead">Read:</label>
+            <input type="checkbox" name="isRead" id="isRead" required />
+          </div>
+          <button type="submit">Add Book</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
