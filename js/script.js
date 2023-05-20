@@ -80,7 +80,7 @@ function closeModal() {
   modalBackground.style.display = 'none';
   setTimeout(() => {
     modal.style.display = 'none';
-  }, 300);
+  }, 200);
 }
 
 closeBtn.addEventListener('click', () => {
