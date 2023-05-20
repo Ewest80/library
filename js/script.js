@@ -109,4 +109,31 @@ document.getElementById('bookForm').addEventListener('submit', (e) => {
   closeModal();
   document.getElementById('bookForm').reset();
   displayBooks(myLibrary);
+  UpdateLibraryInfo(myLibrary);
 });
+
+function UpdateLibraryInfo(library) {
+  const totalBooks = document.getElementById('books');
+  const booksRead = document.getElementById('booksRead');
+  const totalPages = document.getElementById('totalPages');
+  const pagesRead = document.getElementById('pagesRead');
+  let booksReadCounter = 0;
+  let pagesReadCounter = 0;
+  let totalPagesCounter = 0;
+
+  library.forEach((book) => {
+    totalPagesCounter += book.pageCount;
+
+    if (book.isRead) {
+      booksReadCounter++;
+      pagesReadCounter += book.pageCount;
+    }
+  });
+
+  totalBooks.textContent = library.length;
+  booksRead.textContent = booksReadCounter;
+  totalPages.textContent = totalPagesCounter;
+  pagesRead.textContent = pagesReadCounter;
+}
+
+UpdateLibraryInfo(myLibrary);
