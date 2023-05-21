@@ -16,7 +16,7 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function createBookCard(book) {
+function createBookCard(book, index) {
   const bookCard = document.createElement('div');
   const titleElement = document.createElement('h3');
   const authorElement = document.createElement('p');
@@ -51,6 +51,11 @@ function createBookCard(book) {
   bookInteraction.appendChild(delBtn);
   bookCard.appendChild(bookInteraction);
 
+  isReadElement.addEventListener('change', () => {
+    book.isRead = isReadElement.checked;
+    UpdateLibraryInfo(myLibrary);
+  });
+
   return bookCard;
 }
 
@@ -60,8 +65,8 @@ function displayBooks(library) {
   // Clear the gridContainer to prevent duplicates
   gridContainer.innerHTML = '';
 
-  library.forEach((book) => {
-    const bookCard = createBookCard(book);
+  library.forEach((book, index) => {
+    const bookCard = createBookCard(book, index);
     gridContainer.appendChild(bookCard);
   });
 }
