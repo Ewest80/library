@@ -21,6 +21,8 @@ function createBookCard(book) {
   const titleElement = document.createElement('h3');
   const authorElement = document.createElement('p');
   const pageCountElement = document.createElement('p');
+
+  const bookInteraction = document.createElement('div');
   const isReadElement = document.createElement('input');
   const isReadLabel = document.createElement('label');
   const delBtn = document.createElement('button');
@@ -28,10 +30,14 @@ function createBookCard(book) {
   bookCard.classList.add('book-card');
   titleElement.textContent = book.title;
   authorElement.textContent = book.author;
-  pageCountElement.textContent = book.pageCount;
+  pageCountElement.textContent = book.pageCount + ' pages';
+
+  bookInteraction.classList.add('book-interaction');
+  isReadElement.setAttribute('id', 'isReadInput');
   isReadElement.type = 'checkbox';
   isReadElement.checked = book.isRead;
   isReadLabel.textContent = 'Read';
+  delBtn.classList.add('red-background');
   delBtn.textContent = 'Remove Book';
 
   isReadLabel.appendChild(isReadElement);
@@ -39,8 +45,11 @@ function createBookCard(book) {
   bookCard.appendChild(titleElement);
   bookCard.appendChild(authorElement);
   bookCard.appendChild(pageCountElement);
-  bookCard.appendChild(isReadLabel);
-  bookCard.appendChild(delBtn);
+  // bookCard.appendChild(isReadLabel);
+  // bookCard.appendChild(delBtn);
+  bookInteraction.appendChild(isReadLabel);
+  bookInteraction.appendChild(delBtn);
+  bookCard.appendChild(bookInteraction);
 
   return bookCard;
 }
@@ -125,11 +134,11 @@ function UpdateLibraryInfo(library) {
   let totalPagesCounter = 0;
 
   library.forEach((book) => {
-    totalPagesCounter += book.pageCount;
+    totalPagesCounter += +book.pageCount;
 
     if (book.isRead) {
       booksReadCounter++;
-      pagesReadCounter += book.pageCount;
+      pagesReadCounter += +book.pageCount;
     }
   });
 

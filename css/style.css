@@ -1,8 +1,9 @@
 :root {
+  --white: #fff;
   --linen: #f7ece1;
   --violet: #532742;
   --rose-quartz: #a58a92;
-  --shadow-clr: rgb(83, 39, 66, 0.4);
+  --shadow-clr: rgb(83, 39, 66, 0.5);
 }
 
 *,
@@ -97,16 +98,75 @@ input[type='number'] {
   margin: 1rem 0;
 }
 
+.red-background {
+  background-color: #bf060399;
+}
+
 .book-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
   padding: 1rem;
-  border: 1px solid black;
+  border: 2px solid var(--rose-quartz);
   border-radius: 0.5rem;
-  height: 300px;
-  background-color: #fff;
+  min-height: 250px;
+  background-color: var(--white);
+  box-shadow: 2px 2px 6px var(--shadow-clr);
+}
+
+.book-card h3 {
+  font-style: italic;
+}
+
+.book-card label {
+  height: 3rem;
+  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.book-interaction label > input[type='checkbox'] {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--violet);
+  border-radius: 3px;
+  outline: none;
+  background-color: var(--white);
+}
+
+.book-interaction label > input[type='checkbox']:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: var(--violet);
+}
+
+.book-card button {
+  height: 3rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+}
+
+.book-card .book-interaction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 #modal {
@@ -160,11 +220,11 @@ input[type='number'] {
 
 .modal-content h2 {
   text-align: center;
-  color: #fff;
+  color: var(--white);
 }
 
 .close {
-  color: #fff;
+  color: var(--white);
   position: absolute;
   top: 0.5rem;
   right: 1rem;
@@ -199,7 +259,7 @@ form .form-item input {
 }
 
 form .form-item:nth-child(4) label {
-  color: #fff;
+  color: var(--white);
   font-size: 1.2rem;
   font-weight: bold;
   margin-right: 1rem;
@@ -234,7 +294,7 @@ form .form-item input[type='checkbox'] {
   border: 1px solid var(--linen);
   border-radius: 3px;
   outline: none;
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 form .form-item input[type='checkbox']:checked::before {
