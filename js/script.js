@@ -32,7 +32,6 @@ function createBookCard(book, index) {
   pageCountElement.textContent = book.pageCount + ' pages';
 
   bookInteraction.classList.add('book-interaction');
-  isReadElement.setAttribute('id', 'isReadInput');
   isReadElement.type = 'checkbox';
   isReadElement.checked = book.isRead;
   isReadLabel.textContent = 'Read';

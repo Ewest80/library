@@ -40,6 +40,8 @@ input[type='number'] {
 }
 
 .header {
+  position: sticky;
+  top: 0;
   background-color: var(--violet);
   padding: 1rem;
   box-shadow: 0 3px 4px var(--shadow-clr);
@@ -85,12 +87,14 @@ input[type='number'] {
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
   grid-auto-rows: 18.75rem;
   gap: 2rem;
+  padding: 3rem 0;
 }
 
 .container .library-info {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  margin-top: 1rem;
 }
 
 .container .library-info .info {
