@@ -21,7 +21,6 @@ function createBookCard(book, index) {
   const titleElement = document.createElement('h3');
   const authorElement = document.createElement('p');
   const pageCountElement = document.createElement('p');
-
   const bookInteraction = document.createElement('div');
   const isReadElement = document.createElement('input');
   const isReadLabel = document.createElement('label');
@@ -45,15 +44,21 @@ function createBookCard(book, index) {
   bookCard.appendChild(titleElement);
   bookCard.appendChild(authorElement);
   bookCard.appendChild(pageCountElement);
-  // bookCard.appendChild(isReadLabel);
-  // bookCard.appendChild(delBtn);
   bookInteraction.appendChild(isReadLabel);
   bookInteraction.appendChild(delBtn);
   bookCard.appendChild(bookInteraction);
 
+  // Updates library info display
   isReadElement.addEventListener('change', () => {
     book.isRead = isReadElement.checked;
-    UpdateLibraryInfo(myLibrary);
+    updateLibraryInfo(myLibrary);
+  });
+
+  // Deletes book from library and updates display
+  delBtn.addEventListener('click', () => {
+    myLibrary.splice(index, 1);
+    displayBooks(myLibrary);
+    updateLibraryInfo(myLibrary);
   });
 
   return bookCard;
@@ -71,17 +76,15 @@ function displayBooks(library) {
   });
 }
 
+// Test data
 const testBook = new Book('The Hobbit', 'J.R.R. Tolkien', 294, false);
-const testBook2 = new Book('Cool Title', 'Unknown', 323, true);
-const testBook3 = new Book('Cool Title', 'Unknown', 323, true);
-const testBook4 = new Book('Cool Title', 'Unknown', 323, true);
+const testBook2 = new Book("The Hobbit's Revenge", 'J.R.R. Jr.', 295, true);
 
 addBookToLibrary(testBook);
 addBookToLibrary(testBook2);
-addBookToLibrary(testBook3);
-addBookToLibrary(testBook4);
 displayBooks(myLibrary);
 
+// Modal opening and closing
 addBook.addEventListener('click', () => {
   modalBackground.style.display = 'block';
   modal.style.display = 'block';
@@ -126,10 +129,10 @@ document.getElementById('bookForm').addEventListener('submit', (e) => {
   closeModal();
   document.getElementById('bookForm').reset();
   displayBooks(myLibrary);
-  UpdateLibraryInfo(myLibrary);
+  updateLibraryInfo(myLibrary);
 });
 
-function UpdateLibraryInfo(library) {
+function updateLibraryInfo(library) {
   const totalBooks = document.getElementById('books');
   const booksRead = document.getElementById('booksRead');
   const totalPages = document.getElementById('totalPages');
@@ -153,4 +156,4 @@ function UpdateLibraryInfo(library) {
   pagesRead.textContent = pagesReadCounter;
 }
 
-UpdateLibraryInfo(myLibrary);
+updateLibraryInfo(myLibrary);
