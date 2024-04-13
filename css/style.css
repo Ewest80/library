@@ -127,12 +127,25 @@ textarea:not([rows]) {
   display: flex;
   align-items: center;
   gap: .5rem;
-
 }
 
 .add-book img {
   width: 48px;
   height: 48px;
+  transform: rotate(0);
+  transition: all 0.2s ease-in-out;
+}
+
+.add-book:hover {
+  cursor: pointer;
+}
+
+.add-book:hover img {
+  transform: rotate(45deg) scale(1.1);
+}
+
+.add-book:active img {
+  transform: rotate(90deg) scale(1);
 }
 
 /* Library Info */
