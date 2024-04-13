@@ -59,7 +59,28 @@
         </div>
       </section>
 
-
+      <dialog class="bg-primary-dark book-dialog" open>
+        <h2 class="fs-subheading fw-bold text-primary-light text-center">Book Info</h2>
+        <form class="book-form">
+          <div class="form-item">
+            <input type="text" id="title" class="input" required>
+            <label for="title" class="fs-body-lg text-primary-dark">Title</label>
+          </div>
+          <div class="form-item">
+            <input type="text" name="author" id="author" required>
+            <label for="author" class="fs-body-lg text-primary-dark">Author</label>
+          </div>
+          <div class="form-item">
+            <input type="tel" name="pageCount" id="pageCount" required>
+            <label for="pageCount" class="fs-body-lg text-primary-dark">Page Count</label>
+          </div>
+          <div class="form-item">
+            <label for="isRead" class="fs-large-text fw-semi-bold text-primary-light">Read:</label>
+            <input type="checkbox" name="isRead" id="isRead">
+          </div>
+          <button class="btn fw-semi-bold fs-large-text text-primary-dark">Add Book</button>
+        </form>
+      </dialog>
     </main>
   </body>
 </html>
