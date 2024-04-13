@@ -23,25 +23,43 @@
       </div>
     </header>
 
-    <section class="library-info">
-      <div class="container">
-        <div class="info text-primary-dark text-center">
-          <p class="fs-body-lg fw-bold">Books</p>
-          <p id="books">0</p>
+    <main>
+      <section class="library-info">
+        <div class="container">
+          <div class="info text-primary-dark text-center">
+            <p class="fs-body-lg fw-bold">Books</p>
+            <p id="books">0</p>
+          </div>
+          <div class="info text-primary-dark text-center">
+            <p class="fs-body-lg fw-bold">Books Read</p>
+            <p id="booksRead">0</p>
+          </div>
+          <div class="info text-primary-dark text-center">
+            <p class="fs-body-lg fw-bold">Total Pages</p>
+            <p id="totalPages">0</p>
+          </div>
+          <div class="info text-primary-dark text-center">
+            <p class="fs-body-lg fw-bold">Pages Read</p>
+            <p id="pagesRead">0</p>
+          </div>
         </div>
-        <div class="info text-primary-dark text-center">
-          <p class="fs-body-lg fw-bold">Books Read</p>
-          <p id="booksRead">0</p>
+      </section>
+
+      <section class="library">
+        <div id="bookDisplay" class="container">
+          <div class="book-card">
+            <h3>The Hobbit</h3>
+            <p>J.R.R. Tolkien</p>
+            <p>295</p>
+            <div class="book-card-actions">
+              <button class="read-button">Read</button>
+              <button class="delete-button">Delete</button>
+            </div>
+          </div>
         </div>
-        <div class="info text-primary-dark text-center">
-          <p class="fs-body-lg fw-bold">Total Pages</p>
-          <p id="totalPages">0</p>
-        </div>
-        <div class="info text-primary-dark text-center">
-          <p class="fs-body-lg fw-bold">Pages Read</p>
-          <p id="pagesRead">0</p>
-        </div>
-      </div>
-    </section>
+      </section>
+
+
+    </main>
   </body>
 </html>
