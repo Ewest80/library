@@ -233,6 +233,12 @@ textarea:not([rows]) {
   height: 1.5rem;
 }
 
+.book-card-actions img:hover,
+.is-read-toggle label:hover,
+.is-read-toggle input[type='checkbox']:hover {
+  cursor: pointer;
+}
+
 
 /* Book Info Dialog */
 .book-dialog {
