@@ -70,20 +70,17 @@ function createBookCard(book, index) {
 
 const bookDisplay = document.querySelector('#bookDisplay');
 
-// Listen for click events on the read checkbox
+// Listen for click events on the read checkbox and delete book icon
 bookDisplay.addEventListener('click', (e) => {
+    let bookIndex;
     if (e.target.type === 'checkbox' || e.target.tagName === 'label') {
         // Get the index of the book in the library, I know there is a better way to do this
-        const bookIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
+        bookIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
         myLibrary[bookIndex].isRead = !myLibrary[bookIndex].isRead;
         updateLibraryInfo(myLibrary);
     }
-});
-
-// Listen for click events on the delete book icon
-bookDisplay.addEventListener('click', (e) => {
-    if (e.target.id === 'deleteBook') {
-        const bookIndex = +e.target.parentElement.parentElement.getAttribute('data-index');
+    else if (e.target.id === 'deleteBook') {
+        bookIndex = +e.target.parentElement.parentElement.getAttribute('data-index');
         myLibrary.splice(bookIndex, 1);
         displayBooks(myLibrary);
         updateLibraryInfo(myLibrary);
