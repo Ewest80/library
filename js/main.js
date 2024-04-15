@@ -44,7 +44,7 @@ function createBookCard(book, index) {
     booksReadLabel.textContent = 'Read';
 
     const deleteBook = document.createElement('img');
-    deleteBook.src = '/images/trash-can-outline.svg';
+    deleteBook.src = 'images/trash-can-outline.svg';
     deleteBook.alt = 'Delete Book';
     deleteBook.classList.add('delete-book');
 
