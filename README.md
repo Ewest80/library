@@ -6,7 +6,7 @@ This is a library project that allows users to add books to the library, remove 
 books in the library. The library information is displayed at the top of the page.
 
 When the user clicks the Add book button a dialog modal will appear with a form to add a book to the library. When the
-submits the form the book card elements are constructed with javascript and added to the library.
+user submits the form the book card elements are constructed with javascript and added to the library.
 
 ## Features
 
