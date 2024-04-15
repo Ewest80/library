@@ -22,7 +22,8 @@ function addBookToLibrary(book) {
 function createBookCard(book, index) {
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
-    bookCard.setAttribute('data-index', index);
+    bookCard.dataset.index = index;
+    // bookCard.setAttribute('data-index', index);
 
     const title = document.createElement('h3');
     title.textContent = book.title;
@@ -73,14 +74,14 @@ const bookDisplay = document.querySelector('#bookDisplay');
 // Listen for click events on the read checkbox and delete book icon
 bookDisplay.addEventListener('click', (e) => {
     let bookIndex;
-    if (e.target.type === 'checkbox' || e.target.tagName === 'label') {
+    if (e.target.type === 'checkbox') {
         // Get the index of the book in the library, I know there is a better way to do this
-        bookIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
+        bookIndex = e.target.parentElement.parentElement.parentElement.dataset.index;
         myLibrary[bookIndex].isRead = !myLibrary[bookIndex].isRead;
         updateLibraryInfo(myLibrary);
     }
     else if (e.target.id === 'deleteBook') {
-        bookIndex = +e.target.parentElement.parentElement.getAttribute('data-index');
+        bookIndex = +e.target.parentElement.parentElement.dataset.index;
         myLibrary.splice(bookIndex, 1);
         displayBooks(myLibrary);
         updateLibraryInfo(myLibrary);
@@ -89,12 +90,10 @@ bookDisplay.addEventListener('click', (e) => {
 
 function displayBooks(library) {
     // Clear the book display
-    bookDisplay.innerHTML = '';
+    bookDisplay.textContent = '';
 
-    library.forEach((book, index) => {
-        const bookCard = createBookCard(book, index);
-        bookDisplay.appendChild(bookCard);
-    });
+    const bookCards = library.map((book, index) => createBookCard(book, index));
+    bookDisplay.append(...bookCards);
 }
 
 // Test data
@@ -143,9 +142,9 @@ function updateLibraryInfo(library) {
     });
 
     totalBooks.textContent = library.length;
-    booksRead.textContent = booksReadCounter.toString();
-    totalPages.textContent = totalPagesCounter.toString();
-    pagesRead.textContent = pagesReadCounter.toString();
+    booksRead.textContent = booksReadCounter;
+    totalPages.textContent = totalPagesCounter;
+    pagesRead.textContent = pagesReadCounter;
 }
 
 updateLibraryInfo(myLibrary);
