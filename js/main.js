@@ -23,7 +23,6 @@ function createBookCard(book, index) {
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
     bookCard.dataset.index = index;
-    // bookCard.setAttribute('data-index', index);
 
     const title = document.createElement('h3');
     title.textContent = book.title;
@@ -44,7 +43,6 @@ function createBookCard(book, index) {
 
     const booksReadLabel = document.createElement('label');
     booksReadLabel.textContent = 'Read';
-    booksReadLabel.htmlFor = 'bookRead';
 
     const deleteBook = document.createElement('img');
     deleteBook.src = '/images/trash-can-outline.svg';
@@ -58,8 +56,8 @@ function createBookCard(book, index) {
     bookCard.appendChild(author);
     bookCard.appendChild(pageCount);
 
+    booksReadLabel.appendChild(bookReadCheckbox);
     isReadToggle.appendChild(booksReadLabel);
-    isReadToggle.appendChild(bookReadCheckbox);
 
     bookCardActions.appendChild(isReadToggle);
     bookCardActions.appendChild(deleteBook);
@@ -75,8 +73,8 @@ const bookDisplay = document.querySelector('#bookDisplay');
 bookDisplay.addEventListener('click', (e) => {
     let bookIndex;
     if (e.target.type === 'checkbox') {
-        // Get the index of the book in the library, I know there is a better way to do this
-        bookIndex = e.target.parentElement.parentElement.parentElement.dataset.index;
+        let bookCard = e.target.closest('.book-card');
+        bookIndex = bookCard.dataset.index;
         myLibrary[bookIndex].isRead = !myLibrary[bookIndex].isRead;
         updateLibraryInfo(myLibrary);
     }
