@@ -72,14 +72,16 @@ const bookDisplay = document.querySelector('#bookDisplay');
 // Listen for click events on the read checkbox and delete book icon
 bookDisplay.addEventListener('click', (e) => {
     let bookIndex;
+    let bookCard;
     if (e.target.type === 'checkbox') {
-        let bookCard = e.target.closest('.book-card');
+        bookCard = e.target.closest('.book-card');
         bookIndex = bookCard.dataset.index;
         myLibrary[bookIndex].isRead = !myLibrary[bookIndex].isRead;
         updateLibraryInfo(myLibrary);
     }
     else if (e.target.id === 'deleteBook') {
-        bookIndex = +e.target.parentElement.parentElement.dataset.index;
+        bookCard = e.target.closest('.book-card');
+        bookIndex = +bookCard.dataset.index;
         myLibrary.splice(bookIndex, 1);
         displayBooks(myLibrary);
         updateLibraryInfo(myLibrary);
