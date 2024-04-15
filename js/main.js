@@ -6,7 +6,6 @@ addBook.addEventListener('click', () => {
     modal.showModal();
 });
 
-
 const myLibrary = [];
 
 function Book(title, author, pageCount, isRead) {
@@ -71,20 +70,23 @@ function createBookCard(book, index) {
 
 const bookDisplay = document.querySelector('#bookDisplay');
 
+// Listen for click events on the read checkbox
 bookDisplay.addEventListener('click', (e) => {
     if (e.target.type === 'checkbox' || e.target.tagName === 'label') {
         // Get the index of the book in the library, I know there is a better way to do this
         const bookIndex = e.target.parentElement.parentElement.parentElement.getAttribute('data-index');
         myLibrary[bookIndex].isRead = !myLibrary[bookIndex].isRead;
-        console.log(myLibrary[bookIndex].isRead);
+        updateLibraryInfo(myLibrary);
     }
 });
 
+// Listen for click events on the delete book icon
 bookDisplay.addEventListener('click', (e) => {
     if (e.target.id === 'deleteBook') {
         const bookIndex = +e.target.parentElement.parentElement.getAttribute('data-index');
         myLibrary.splice(bookIndex, 1);
         displayBooks(myLibrary);
+        updateLibraryInfo(myLibrary);
     }
 });
 
@@ -100,10 +102,53 @@ function displayBooks(library) {
 
 // Test data
 const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', 295, true);
-const book2 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 423, false);
+const book2 = new Book('The Hobbit 2', 'J.R.R. Jr.', 296, false);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 
 displayBooks(myLibrary);
 
+// Handle form submission
+const bookForm = document.querySelector('#bookForm');
+bookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pageCount = document.querySelector('#pageCount').value;
+    const isRead = document.querySelector('#isRead').checked;
+
+    const newBook = new Book(title, author, pageCount, isRead);
+    addBookToLibrary(newBook);
+    bookForm.reset();
+    displayBooks(myLibrary);
+    updateLibraryInfo(myLibrary);
+    modal.close();
+});
+
+function updateLibraryInfo(library) {
+    const totalBooks = document.querySelector('#books');
+    const booksRead = document.querySelector('#booksRead');
+    const totalPages = document.querySelector('#totalPages');
+    const pagesRead = document.querySelector('#pagesRead');
+    let booksReadCounter = 0;
+    let pagesReadCounter = 0;
+    let totalPagesCounter = 0;
+
+    library.forEach(book => {
+        totalPagesCounter += +book.pageCount;
+
+        if (book.isRead) {
+            booksReadCounter++;
+            pagesReadCounter += +book.pageCount;
+        }
+    });
+
+    totalBooks.textContent = library.length;
+    booksRead.textContent = booksReadCounter.toString();
+    totalPages.textContent = totalPagesCounter.toString();
+    pagesRead.textContent = pagesReadCounter.toString();
+}
+
+updateLibraryInfo(myLibrary);

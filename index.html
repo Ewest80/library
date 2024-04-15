@@ -47,24 +47,13 @@
 
       <section class="library">
         <div id="bookDisplay" class="container">
-          <div class="book-card">
-            <h3>The Hobbit</h3>
-            <p>J.R.R. Tolkien</p>
-            <p>295</p>
-            <div class="book-card-actions">
-              <div class="is-read-toggle">
-                <label for="bookRead">Read</label>
-                <input type="checkbox" name="bookRead" id="bookRead">
-              </div>
-              <img id="deleteBook" src="/images/trash-can-outline.svg" alt="Delete Book">
-            </div>
-          </div>
+          
         </div>
       </section>
 
       <dialog class="bg-primary-dark book-dialog">
         <h2 class="fs-subheading fw-bold text-primary-light text-center">Book Info</h2>
-        <form class="book-form">
+        <form class="book-form" id="bookForm">
           <div class="form-item">
             <input type="text" id="title" class="input" required>
             <label for="title" class="fs-body-lg text-primary-dark">Title</label>
