@@ -38,7 +38,6 @@ function createBookCard(book, index) {
 
     const bookReadCheckbox = document.createElement('input');
     bookReadCheckbox.type = 'checkbox';
-    bookReadCheckbox.id = 'bookRead';
     bookReadCheckbox.checked = book.isRead;
 
     const booksReadLabel = document.createElement('label');
@@ -47,7 +46,7 @@ function createBookCard(book, index) {
     const deleteBook = document.createElement('img');
     deleteBook.src = '/images/trash-can-outline.svg';
     deleteBook.alt = 'Delete Book';
-    deleteBook.id = 'deleteBook';
+    deleteBook.classList.add('delete-book');
 
     const isReadToggle = document.createElement('div');
     isReadToggle.classList.add('is-read-toggle');
@@ -79,7 +78,7 @@ bookDisplay.addEventListener('click', (e) => {
         myLibrary[bookIndex].isRead = !myLibrary[bookIndex].isRead;
         updateLibraryInfo(myLibrary);
     }
-    else if (e.target.id === 'deleteBook') {
+    else if (e.target.classList.contains('delete-book')) {
         bookCard = e.target.closest('.book-card');
         bookIndex = +bookCard.dataset.index;
         myLibrary.splice(bookIndex, 1);
